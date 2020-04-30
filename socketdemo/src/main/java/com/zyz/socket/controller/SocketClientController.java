@@ -1,5 +1,6 @@
 package com.zyz.socket.controller;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,11 +23,9 @@ public class SocketClientController {
 	@PostMapping(value = "/sendMsg")
 	public String sendMsg(String msg) {
 		log.info("msg = {}",msg);
-		
-		
-		
-		
-		
+		if (StringUtils.isNotEmpty(msg)) {
+			this.socketClientService.sendToServer(transNoEnum, body);
+		}
 		return "";
 	}
 	
